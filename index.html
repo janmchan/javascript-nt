@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Refactor Me</title>
+	<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+	<script type="text/javascript" src="src/do-not-refactor/LawnmowerRepository.js"></script>
+	<script type="text/javascript" src="src/do-not-refactor/PhoneCaseRepository.js"></script>
+	<script type="text/javascript" src="src/do-not-refactor/TShirtRepository.js"></script>
+	<script type="text/javascript" src="src/refactored/CurrencyRepository.js"></script>
+
+	<script type="text/javascript" src="src/refactored/ProductdataApp.js"></script>
+	<script type="text/javascript" src="src/refactored/ProductdataRepositories.js"></script>
+	<script type="text/javascript" src="src/refactored/ProductdataServices.js"></script>
+	<script type="text/javascript" src="src/refactored/ProductdataControllers.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"></head>
+	
+   
+<body  ng-app="ProductDataApp" ng-controller="MainController">
+	<div ng-repeat="Currency in Currencies" style="max-width: 600px">
+		<table class="table table-striped">
+			<thead>
+				<tr><td colspan="1">Products ({{Currency.name}})</td></tr>
+				<tr>
+					<td>Name</td>
+					<td>Price</td>
+					<td>Type</td>
+				</tr>
+			</thead>
+		 	<tbody>
+			<tr ng-repeat="Product in ProductList">
+				<td>{{ Product.name }}</td>
+				<td>{{ (Product.price * Currency.value).toFixed(2) }}</td>
+				<td>{{ Product.type }}</td>
+			</tr>
+			</tbody></table>
+	</div>
+</body>
+</html>
